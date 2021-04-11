@@ -22,10 +22,11 @@
   "test sphere hit"
   [centre radius ray]
 
-  (def oc (vec/sub (:origin ray) centre))
-  (def a (vec/dot (:direction ray) (:direction ray)))
-  (def b (* 2.0 (vec/dot oc (:direction ray))))
-  (def c (- (vec/dot oc oc) (* radius radius)))
-  (def discriminant (- (* b b) (* 4 (* a c))))
-
-  (if (> discriminant 0.0) true false))
+  (let [oc (vec/sub (:origin ray) centre)
+        a (vec/dot (:direction ray) (:direction ray))
+        b (* 2.0 (vec/dot oc (:direction ray)))
+        c (- (vec/dot oc oc) (* radius radius))
+        discriminant (- (* b b) (* 4 (* a c)))]
+    
+    (if (> discriminant 0.0) true false)
+    ))
